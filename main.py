@@ -59,6 +59,10 @@ def scrape_biz_info(biz_num: str):
                 key = th.text.strip().replace(" ", "") 
                 val = td.text.strip()
                 
+                # 🚨 [수정된 부분] '영문' 주소는 덮어쓰지 않고 무조건 건너뛰기!
+                if "영문" in key:
+                    continue
+                
                 if "설립일" in key:
                     established_date = val
                 elif "업종" in key:
